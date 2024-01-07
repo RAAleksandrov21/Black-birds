@@ -1,26 +1,30 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
-
+import * as React from "react";
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+  StatusBar,
+  SafeAreaView,
+} from "react-native";
+import WelcomeScreen from "./screens/welcome";
+import { NavigationContainer } from "@react-navigation/native";
+import {createNativeStackNavigator} from "react-native-screens/native-stack"
+import Regpage from "./screens/regpage";
 const App = () => {
+  const Stack = createNativeStackNavigator();
   return (
-    <View style={styles.container}>
-      <Text style = {styles.infoPage}>Black birds</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={WelcomeScreen} />
+        <Stack.Screen name="Regpage" component={Regpage} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 8,
-    backgroundColor: "black",
-    alignItems: "center",
-    justifyContent:"center",
-  },
-  infoPage:{
-    color:'white',
-  },
-});
+
+
+
 
 export default App;

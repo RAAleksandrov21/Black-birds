@@ -1,29 +1,70 @@
-import React from 'react'
-import { SafeAreaView, StyleSheet, View, Text, Image } from "react-native";
+import React from "react";
+import {
+  SafeAreaView,
+  StyleSheet,
+  StatusBar,
+  Platform,
+  TextInput,
+} from "react-native";
 
 function Register() {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.boxInfo}>
-        <Text>Register</Text>
-      </View>
+      <TextInput
+        style={styles.input}
+        placeholder="First name"
+        textContentType="name"
+        placeholderTextColor={"white"}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Second name"
+        textContentType="name"
+        placeholderTextColor={"white"}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Last name"
+        textContentType="name"
+        placeholderTextColor={"white"}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Email name"
+        textContentType="emailAddress"
+        placeholderTextColor={"white"}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        textContentType="password"
+        placeholderTextColor={"white"}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Username"
+        textContentType="username"
+        placeholderTextColor={"white"}
+      />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    backgroundColor:"#000",
-
+  container: {
+    flex: 1,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    backgroundColor: "dodgerblue",
+    alignItems: "center",
   },
-  background: {
-    width:"100%",
-    height:"100%",
-
+  input:{
+    height:40,
+    margin: 20,
+    borderWidth:1,
+    padding:10,
+    width:"50%",
+    borderColor:"white"
   },
 });
 
-
 export default Register;
-

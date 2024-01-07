@@ -15,8 +15,11 @@ function WelcomeScreen({navigation}) {
   
   
   return (
-    <View style={styles.boxInfo}>
-      <Button title="Go to reg page" onPress={() => navigation.navigate('Regpage')} />
+    <View style={styles.container}>
+      <Button
+        title="Go to reg page"
+        onPress={() => navigation.navigate("Regpage")}
+      />
     </View>
   );
 }
@@ -25,20 +28,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  },
-  boxInfo: {
     backgroundColor: "dodgerblue",
     height: "30%",
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    flex: 0,
   },
-  info:{
-    color:"white",
-    fontSize:30,
-  },
-
 });
 
 

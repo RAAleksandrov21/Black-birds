@@ -11,10 +11,19 @@ import {
   Button,
 } from "react-native";
 
-function Regpage() {
+function Regpage({navigation}) {
   return (
-    <View style={styles.boxInfo}>
-      <Button title="Here is reg page" />
+    <View style={styles.container}>
+      <Button
+        title="Log in"
+        onPress={() => navigation.navigate("Login")}
+        style={styles.registerButton}
+      />
+      <Button
+        title="Register"
+        onPress={() => navigation.navigate("Register")}
+        style={styles.loginButton}
+      />
     </View>
   );
 }
@@ -23,19 +32,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  },
-  boxInfo: {
     backgroundColor: "dodgerblue",
     height: "30%",
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    flex: 0,
   },
-  info: {
-    color: "white",
-    fontSize: 30,
-  },
+
 });
 
 export default Regpage;

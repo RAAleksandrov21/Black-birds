@@ -6,14 +6,24 @@ import {
   View,
   StatusBar,
   SafeAreaView,
+  TextInput,
 } from "react-native";
 
 const Login = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.boxInfo}>
-        <Text>LogIn</Text>
-      </View>
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        textContentType="password"
+        placeholderTextColor={"white"}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Username"
+        textContentType="username"
+        placeholderTextColor={"white"}
+      />
     </SafeAreaView>
   );
 };
@@ -21,18 +31,21 @@ const Login = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  },
-  boxInfo: {
     backgroundColor: "dodgerblue",
     height: "30%",
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    flex: 0,
   },
-
+  input: {
+    height: 40,
+    margin: 20,
+    borderWidth: 1,
+    padding: 10,
+    width: "50%",
+    borderColor: "white",
+  },
 });
 
 export default Login;

@@ -8,22 +8,24 @@ import {
   Image,
   Platform,
   StatusBar,
-  Button,
+  TouchableOpacity,
 } from "react-native";
 
 function Regpage({navigation}) {
   return (
     <View style={styles.container}>
-      <Button
-        title="Log in"
-        onPress={() => navigation.navigate("Login")}
-        style={styles.registerButton}
-      />
-      <Button
-        title="Register"
-        onPress={() => navigation.navigate("Register")}
+      <TouchableOpacity
         style={styles.loginButton}
-      />
+        onPress={() => navigation.navigate("Login")}
+      >
+        <Text>Log in</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.registerButton}
+        onPress={() => navigation.navigate("Register")}
+      >
+        <Text>Register</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -32,13 +34,25 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-    backgroundColor: "dodgerblue",
+    backgroundColor: "#00010D",
     height: "30%",
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
   },
-
+  loginButton: {
+    backgroundColor: "gold",
+    padding: 10,
+    alignItems: "center",
+    borderRadius: 50,
+  },
+  registerButton: {
+    backgroundColor: "gold",
+    padding: 10,
+    alignItems: "center",
+    borderRadius: 50,
+    margin: 10,
+  },
 });
 
 export default Regpage;

@@ -1,9 +1,4 @@
-<h1>Black brids</h1>
-<p align = "center">
-  <img src = "" alt = "" width="500px">
-</p>
-
-<hr>
+<h1 align="center">Logic Game Project</h1>
 
 <br>
 

@@ -1,4 +1,4 @@
-<h1 align="center">Logic Game Project</h1>
+<h1 align="center">Black birds</h1>
 
 <br>
 

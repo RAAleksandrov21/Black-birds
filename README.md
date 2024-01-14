@@ -14,7 +14,7 @@
 - [Download](#download)
 
 ## 💻 Description <a name="description"></a>
-- Our idea, which will accept from the many, is to digitize the way of yawning.
+- Our idea, which will accept from the many, is to digitize the way of yawning 📲.
 
   
 ## ⚒️ Technologies <a name="technologies"></a>
@@ -29,18 +29,18 @@
 
 ## 📄 Documents
   <ul>
-    <li><a href="docs/Documentation.docx">Documentation</a></li>
-    <li><a href="docs/Presantation.pptx">Presentation</a></li>
+    <li><a href="docs/Documentation.docx">🧾 Documentation</a></li>
+    <li><a href="docs/Presantation.pptx">📰 Presentation</a></li>
    </ul>
 
 ## 🧑🏻‍💻 Contributors <a name="contributors"></a>
 
-- <a href = "https://github.com/RAAleksandrov21"> Radomir Aleksandrov </a> (Scrum Trainer)
--   <a href = "https://github.com/SZGeorgiev21"> Stilian Georgiev </a> (Front-end Developer)
-- <a href = "https://github.com/EEMustafa21"> Enis Mustafa </a> (Back-end Developer)
--  <a href = "https://github.com/ISDelchilov21"> Ivan Delchilov </a> (Back-end Developer)
+- <a href = "https://github.com/RAAleksandrov21">🧑🏻 Radomir Aleksandrov </a> (Scrum Trainer)
+-   <a href = "https://github.com/SZGeorgiev21">👦🏻 Stilian Georgiev </a> (Front-end Developer)
+- <a href = "https://github.com/EEMustafa21">🧒🏻 Enis Mustafa </a> (Back-end Developer)
+-  <a href = "https://github.com/ISDelchilov21">🧑🏻 Ivan Delchilov </a> (Back-end Developer)
 
 ## 📥 Download <a name="download"></a>
 
-<p>To download our project on your machine you just need to clone it. This can be done by pasting this text in your command prompt:</p>
+<p>To download our project on your machine you just need to clone it. This can be done by pasting this text in your command prompt 💻:</p>
 <pre>git clone https://github.com/RAAleksandrov21/Black-birds.git</pre>

@@ -1,59 +1,74 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <iomanip>
+using namespace std;
 
-class BankAccount {
+class BankAccount
+{
 private:
-    std::string accountNumber;
-    std::string accountHolderName;
+    string accountNumber;
+    string accountHolderName;
     double balance;
 
 public:
     // Constructor
-    BankAccount(std::string accountNumber, std::string accountHolderName, double initialBalance)
+    BankAccount(string accountNumber, string accountHolderName, double initialBalance)
         : accountNumber(accountNumber), accountHolderName(accountHolderName), balance(initialBalance) {}
 
     // Member functions
-    void deposit(double amount) {
+    void deposit(double amount)
+    {
         balance += amount;
-        std::cout << "Deposit successful. New balance: " << balance << std::endl;
+        cout << "Deposit successful. New balance: " << balance << endl;
     }
 
-    void withdraw(double amount) {
-        if (amount > balance) {
-            std::cout << "Insufficient funds." << std::endl;
+    void withdraw(double amount)
+    {
+        if (amount > balance)
+        {
+            cout << "Insufficient funds." << endl;
         }
-        else {
+        else
+        {
             balance -= amount;
-            std::cout << "Withdrawal successful. New balance: " << balance << std::endl;
+            cout << "Withdrawal successful. New balance: " << balance << endl;
         }
     }
 
-    double getBalance() const {
+    double getBalance() const
+    {
         return balance;
     }
 
     // Getter for account number
-    std::string getAccountNumber() const {
+    string getAccountNumber() const
+    {
         return accountNumber;
     }
 };
 
-class Bank {
+class Bank
+{
 private:
-    std::vector<BankAccount> accounts;
+    vector<BankAccount> accounts;
 
 public:
     // Member functions
-    void createAccount(std::string accountNumber, std::string accountHolderName, double initialBalance) {
+    void createAccount(string accountNumber, string accountHolderName, double initialBalance)
+    {
         accounts.emplace_back(accountNumber, accountHolderName, initialBalance);
-        std::cout << "Account created successfully." << std::endl;
+        cout << "Account created successfully." << endl;
     }
 
-    void performTransaction(std::string accountNumber, char transactionType, double amount) {
-        for (auto& account : accounts) {
-            if (accountNumber == account.getAccountNumber()) {
-                switch (transactionType) {
+    void performTransaction(string accountNumber, char transactionType, double amount)
+    {
+        for (auto& account : accounts)
+        {
+            if (accountNumber == account.getAccountNumber())
+            {
+                switch (transactionType)
+                {
                 case 'D':
                 case 'd':
                     account.deposit(amount);
@@ -65,91 +80,103 @@ public:
                     break;
 
                 default:
-                    std::cout << "Invalid transaction type." << std::endl;
+                    cout << "Invalid transaction type." << endl;
                     break;
                 }
                 return;
             }
         }
-        std::cout << "Account not found." << std::endl;
+        cout << "Account not found." << endl;
     }
 
-    void checkBalance(std::string accountNumber) {
-        for (const auto& account : accounts) {
-            if (accountNumber == account.getAccountNumber()) {
-                std::cout << "Account Balance: " << account.getBalance() << std::endl;
+    void checkBalance(string accountNumber)
+    {
+        for (const auto& account : accounts)
+        {
+            if (accountNumber == account.getAccountNumber())
+            {
+                cout << "Account Balance: " << account.getBalance() << endl;
                 return;
             }
         }
-        std::cout << "Account not found." << std::endl;
+        cout << "Account not found." << endl;
     }
 };
 
-int main() {
+int main()
+{
+
     Bank bank;
     char choice;
 
-    do {
-        std::cout << "\nMenu:\n";
-        std::cout << "1. Create Account\n";
-        std::cout << "2. Deposit\n";
-        std::cout << "3. Withdraw\n";
-        std::cout << "4. Check Balance\n";
-        std::cout << "5. Exit\n";
-        std::cout << "Enter your choice: ";
-        std::cin >> choice;
+    do
+    {
 
-        switch (choice) {
-        case '1': {
-            std::string accountNumber, accountHolderName;
+        cout << endl << "Menu:" << endl;
+        cout << "1. Create Account" << endl;
+        cout << "2. Deposit" << endl;
+        cout << "3. Withdraw" << endl;
+        cout << "4. Check Balance" << endl;
+        cout << "5. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case '1':
+        {
+            string accountNumber, accountHolderName;
             double initialBalance;
-            std::cout << "Enter account number: ";
-            std::cin >> accountNumber;
-            std::cout << "Enter account holder name: ";
-            std::cin.ignore(); // Ignore newline character in the buffer
-            std::getline(std::cin, accountHolderName);
-            std::cout << "Enter initial balance: ";
-            std::cin >> initialBalance;
+            cout << "Enter account number: ";
+            cin >> accountNumber;
+            cout << "Enter account holder name: ";
+            cin.ignore(); // Ignore newline character in the buffer
+            getline(cin, accountHolderName);
+            cout << "Enter initial balance: ";
+            cin >> initialBalance;
             bank.createAccount(accountNumber, accountHolderName, initialBalance);
             break;
         }
 
-        case '2': {
-            std::string accountNumber;
+        case '2':
+        {
+            string accountNumber;
             double amount;
-            std::cout << "Enter account number: ";
-            std::cin >> accountNumber;
-            std::cout << "Enter deposit amount: ";
-            std::cin >> amount;
+            cout << "Enter account number: ";
+            cin >> accountNumber;
+            cout << "Enter deposit amount: ";
+            cin >> amount;
             bank.performTransaction(accountNumber, 'D', amount);
             break;
         }
 
-        case '3': {
-            std::string accountNumber;
+        case '3':
+        {
+            string accountNumber;
             double amount;
-            std::cout << "Enter account number: ";
-            std::cin >> accountNumber;
-            std::cout << "Enter withdrawal amount: ";
-            std::cin >> amount;
+            cout << "Enter account number: ";
+            cin >> accountNumber;
+            cout << "Enter withdrawal amount: ";
+            cin >> amount;
             bank.performTransaction(accountNumber, 'W', amount);
             break;
         }
 
-        case '4': {
-            std::string accountNumber;
-            std::cout << "Enter account number: ";
-            std::cin >> accountNumber;
+        case '4':
+        {
+            string accountNumber;
+            cout << "Enter account number: ";
+            cin >> accountNumber;
             bank.checkBalance(accountNumber);
             break;
         }
 
         case '5':
-            std::cout << "Exiting the program.\n";
+            cout << "Exiting the program." << endl;
             break;
 
         default:
-            std::cout << "Invalid choice. Please try again.\n";
+            cout << "Invalid choice. Please try again." << endl;
         }
     } while (choice != '5');
 

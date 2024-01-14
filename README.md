@@ -1,4 +1,7 @@
 <h1 align="center">Black birds</h1>
+<p align = "center">
+  <img src = "Logos/logo_team.png" alt = "logo_team.png" width="400px">
+</p>
 
 <br>
 

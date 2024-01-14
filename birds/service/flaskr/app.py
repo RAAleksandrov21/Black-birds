@@ -2,8 +2,10 @@ from flask import Flask, request, jsonify, redirect, url_for, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from flask_bcrypt import Bcrypt
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "http://localhost:19006"}})
 
 # Configure the database connection
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:1234@localhost/irisdb"
@@ -28,14 +30,6 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
 
-# Define WillInfo model
-class WillInfo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    title = db.Column(db.String(40), nullable=False)
-    message_lawyer = db.Column(db.String(255), nullable=True)
-    message_receiver = db.Column(db.String(255), nullable=True)
-
 # Create tables
 db.create_all()
 
@@ -45,50 +39,36 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 # Routes
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['POST'])
 def register():
-    if request.method == 'POST':
-        fname = request.form.get('fname')
-        lname = request.form.get('lname')
-        email = request.form.get('email')
-        password = request.form.get('password')
+    data = request.json
+    
+    fname = data.get('fname')
+    lname = data.get('lname')
+    email = data.get('email')
+    password = data.get('password')
 
-        hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
 
-        new_user = User(fname=fname, lname=lname, email=email, password=hashed_password)
-        db.session.add(new_user)
-        db.session.commit()
+    new_user = User(fname=fname, lname=lname, email=email, password=hashed_password)
+    db.session.add(new_user)
+    db.session.commit()
+    
+    return jsonify({"message": "Registration successful" })
 
-        return redirect(url_for('login'))
-
-    return render_template('register.html')
-
-@app.route('/login', methods=['GET', 'POST'])
+# ... other routes ...
+@app.route('/login', methods=['GET'])
 def login():
-    if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
+    email = request.args.get('email')
+    password = request.args.get('password')
 
-        user = User.query.filter_by(email=email).first()
+    user = User.query.filter_by(email=email).first()
 
-        if user and bcrypt.check_password_hash(user.password, password):
-            login_user(user)
-            return redirect(url_for('dashboard'))
-
-    return render_template('login.html')
-
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('login'))
-
-@app.route('/dashboard')
-@login_required
-def dashboard():
-    return f'Hello, {current_user.fname}! This is your dashboard.'
-
-
+    if user and bcrypt.check_password_hash(user.password, password):
+        login_user(user)
+        return jsonify({"message": "Login successful"})
+    else:
+        return jsonify({"message": "Invalid email or password"}), 401
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="127.0.0.1", port=5000, debug=True)

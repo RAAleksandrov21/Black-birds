@@ -9,25 +9,55 @@ import {
   TextInput,
 } from "react-native";
 
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/login?email=${encodeURIComponent(
+          email
+        )}&password=${encodeURIComponent(password)}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data.message);
+        navigation.navigate("Home");
+      } else {
+        const data = await response.json();
+        console.error(data.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
         placeholder="Password"
         textContentType="password"
-        placeholderTextColor={"white"}
+        value={password}
+        onChangeText={(text) => setPassword(text)}
       />
       <TextInput
         style={styles.input}
-        placeholder="Username"
+        placeholder="email"
         textContentType="username"
-        placeholderTextColor={"white"}
+        value={email}
+        onChangeText={(text) => setEmail(text)}
       />
-      <TouchableOpacity
-        style={styles.submitButton}
-        onPress={() => navigation.navigate("Home")}
-      >
+      <TouchableOpacity style={styles.submitButton} onPress={handleLogin}>
         <Text>Submit</Text>
       </TouchableOpacity>
     </View>
@@ -51,6 +81,7 @@ const styles = StyleSheet.create({
     borderColor: "white",
     borderRadius: 50,
     fontSize: 16,
+    color: "white",
   },
   submitButton: {
     backgroundColor: "gold",

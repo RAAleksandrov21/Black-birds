@@ -27,11 +27,11 @@
 - [Photoshop](https://www.adobe.com/) - Logo
 
 
-  <h1>📄 Documents</h1>
-  <p>
- <h2> <a href ="https://github.com/RAAleksandrov21/Black birds/docs/Documentation.docx" > Documentation</h2>
- <h2> <a href ="https://github.com/RAAleksandrov21/Black birds/docs/Presentation.pptx" > Presentation</h2>
-</p>
+## 📄 Documents
+  <ul>
+    <li><a href="docs/Documentation.docx">Documentation</a></li>
+    <li><a href="docs/Presantation.pptx">Presentation</a></li>
+   </ul>
 
 ## 🧑🏻‍💻 Contributors <a name="contributors"></a>
 

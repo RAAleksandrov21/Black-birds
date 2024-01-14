@@ -14,6 +14,8 @@
 - [Download](#download)
 
 ## 💻 Description <a name="description"></a>
+- Our idea, which will accept from the many, is to digitize the way of yawning.
+
   
 ## ⚒️ Technologies <a name="technologies"></a>
 
@@ -26,8 +28,8 @@
 
 ## 📄 Documents <a name="documents"></a>
 
-- Documentation
-- Presentation
+- Documentation 
+- Presentation <a href ="https://github.com/RAAleksandrov21/Black birds/docs/Presantation.pptx" >
 - Test Plan
 - Game Testing
 

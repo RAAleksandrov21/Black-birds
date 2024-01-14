@@ -26,12 +26,12 @@
 - [Excel](https://www.microsoft.com/en-us/microsoft-365/excel) - QA Documentation
 - [Photoshop](https://www.adobe.com/) - Logo
 
-## 📄 Documents <a name="documents"></a>
 
-- Documentation 
-- Presentation <a href ="https://github.com/RAAleksandrov21/Black birds/docs/Presantation.pptx" >
-- Test Plan
-- Game Testing
+  <h1>📄 Documents</h1>
+  <p>
+ <h2> <a href ="https://github.com/RAAleksandrov21/Black birds/docs/Documentation.docx" > Documentation</h2>
+ <h2> <a href ="https://github.com/RAAleksandrov21/Black birds/docs/Presentation.pptx" > Presentation</h2>
+</p>
 
 ## 🧑🏻‍💻 Contributors <a name="contributors"></a>
 

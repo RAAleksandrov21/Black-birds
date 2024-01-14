@@ -50,9 +50,11 @@ const styles = StyleSheet.create({
   infoText: {
     textAlign: "center",
     fontSize: 60,
+    color:"white"
   },
   infoButton:{
-    fontSize:18
+    fontSize:18,
+    color:"white"
   }
 });
 

@@ -12,3 +12,11 @@ void Account::withdraw(double amount) {
         std::cout << "Insufficient funds.\n";
     }
 }
+
+double Account::getBalance() const {
+    return balance;
+}
+
+std::string Account::getAccountNumber() const {
+    return accountNumber;
+}

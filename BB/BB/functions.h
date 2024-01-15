@@ -16,4 +16,10 @@ public:
     void createAccount();
 
     void performTransaction(char transactionType);
+
+    void transferDigitalAssets();
+
+    void checkBalance();
+
+    ~MyBank();
 };

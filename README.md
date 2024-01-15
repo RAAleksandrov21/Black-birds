@@ -19,7 +19,7 @@
   
 ## ⚒️ Technologies <a name="technologies"></a>
 
-- [Visual Studio](https://visualstudio.microsoft.com/) - Application
+- <img href = "https://brandslogos.com/wp-content/uploads/images/visual-studio-2013-logo.png" width = "30px">[Visual Studio](https://visualstudio.microsoft.com/) - Application
 - [Teams](https://teams.microsoft.com/) - Communication
 - [Word](https://www.microsoft.com/en-us/microsoft-365/word) - Documentation
 - [PowerPoint](https://www.microsoft.com/en-us/microsoft-365/powerpoint) - Presentation

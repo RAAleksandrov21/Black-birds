@@ -12,4 +12,6 @@ private:
 
 public:
     bool isNumeric(const std::string& str);
+
+    void createAccount();
 };

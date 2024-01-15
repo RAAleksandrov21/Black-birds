@@ -1,45 +1,60 @@
-#include <iostream>
 #include "functions.h"
+#include <iostream>
+
+using namespace std;
 
 int main() {
-    Bank bank;
+    MyBank myBank;
     char choice;
 
     do {
-        std::cout << "\nMenu:\n";
-        std::cout << "1. Create Account\n";
-        std::cout << "2. Deposit\n";
-        std::cout << "3. Withdraw\n";
-        std::cout << "4. Check Balance\n";
-        std::cout << "5. Exit\n";
-        std::cout << "Enter your choice: ";
-        std::cin >> choice;
+        cout << "\nMenu:\n";
+        cout << "1. Create Account\n";
+        cout << "2. Deposit\n";
+        cout << "3. Withdraw\n";
+        cout << "4. Transfer Digital Assets\n";
+        cout << "5. Check Balance\n";
+        cout << "6. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        // Handle invalid input
+        if (cin.fail()) {
+            cout << "Invalid input. Please enter a valid choice.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
 
         switch (choice) {
         case '1':
-            createAccount(bank);
+            myBank.createAccount();
             break;
 
         case '2':
-            deposit(bank);
+            myBank.performTransaction('D');
             break;
 
         case '3':
-            withdraw(bank);
+            myBank.performTransaction('W');
             break;
 
         case '4':
-            checkBalance(bank);
+            myBank.transferDigitalAssets();
             break;
 
         case '5':
-            std::cout << "Exiting the program.\n";
+            myBank.checkBalance();
+            break;
+
+        case '6':
+            cout << "Exiting the program.\n";
             break;
 
         default:
-            std::cout << "Invalid choice. Please try again.\n";
+            cout << "Invalid choice. Please try again.\n";
         }
-    } while (choice != '5');
+    } while (choice != '6');
 
     return 0;
 }

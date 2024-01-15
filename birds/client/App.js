@@ -6,6 +6,8 @@ import Regpage from "./screens/regpage";
 import Login from"./screens/login"
 import Register from "./screens/register";
 import Home from "./screens/home"
+import Create from "./screens/create";
+
 const App = () => {
   const Stack = createNativeStackNavigator();
   return (
@@ -42,6 +44,13 @@ const App = () => {
         <Stack.Screen
           name="Home"
           component={Home}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="Create"
+          component={Create}
           options={{
             headerShown: false,
           }}

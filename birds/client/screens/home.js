@@ -1,18 +1,46 @@
 import React from "react";
 import {
-  SafeAreaView,
   StyleSheet,
   StatusBar,
   Platform,
   TextInput,
-  Text
+  Text,
+  View,
+  FlatList
 } from "react-native";
+import {Card, FAB} from "react-native-paper"
 
-function Home() {
+function Home({navigation}) {
+  const data = [
+    { id: 1, title: "First title", body: "First body" },
+    { id: 2, title: "Second title", body: "First body" },
+    { id: 3, title: "Third title", body: "First body" },
+  ];
+
+  const renderData = (item) =>{
+    return (
+      <Card style={styles.cardStyle}>
+        <Text style={styles.infoCards}>{item.title}</Text>
+        <Text style={styles.infoCards}>{item.body}</Text>
+      </Card>
+    );
+  }
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Home</Text>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <FlatList
+        data={data}
+        renderItem={({ item }) => {
+          return renderData(item);
+        }}
+        keyExtractor={(item) => `${item.id}`}
+      />
+      <FAB
+        style={styles.fab}
+        small={false}
+        icon={"plus"}
+        onPress={() => {navigation.navigate("Create")}}
+      />
+    </View>
   );
 }
 
@@ -23,14 +51,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#00010D",
     alignItems: "center",
   },
-  input: {
-    height: 40,
-    margin: 20,
-    borderWidth: 1,
-    padding: 10,
-    width: "50%",
-    borderColor: "white",
+  cardStyle:{
+    margin:10,
+    padding:10,
+    width: 300,
+    marginBottom:10
   },
+  infoCards:{
+    fontSize:20,
+  },
+  fab:{
+    
+
+  }
 });
 
 export default Home;

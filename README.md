@@ -19,12 +19,12 @@
   
 ## ⚒️ Technologies <a name="technologies"></a>
 
-- <img href = "https://brandslogos.com/wp-content/uploads/images/visual-studio-2013-logo.png" width = "30px">[Visual Studio](https://visualstudio.microsoft.com/) - Application
-- [Teams](https://teams.microsoft.com/) - Communication
-- [Word](https://www.microsoft.com/en-us/microsoft-365/word) - Documentation
-- [PowerPoint](https://www.microsoft.com/en-us/microsoft-365/powerpoint) - Presentation
-- [Excel](https://www.microsoft.com/en-us/microsoft-365/excel) - QA Documentation
-- [Photoshop](https://www.adobe.com/) - Logo
+- <img src = "https://brandslogos.com/wp-content/uploads/images/visual-studio-2013-logo.png" width = "30px">[Visual Studio](https://visualstudio.microsoft.com/) - Application
+- <img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Microsoft_Office_Teams_%282018%E2%80%93present%29.svg/2203px-Microsoft_Office_Teams_%282018%E2%80%93present%29.svg.png" width = "30px">[Teams](https://teams.microsoft.com/) - Communication
+- <img src = "https://brandslogos.com/wp-content/uploads/images/microsoft-word-2013-logo-vector.svg" width = "30px">[Word](https://www.microsoft.com/en-us/microsoft-365/word) - Documentation
+- <img src = "https://brandslogos.com/wp-content/uploads/thumbs/microsoft-powerpoint-2013-logo-vector.svg" width = "30px">[PowerPoint](https://www.microsoft.com/en-us/microsoft-365/powerpoint) - Presentation
+- <img src = "https://brandslogos.com/wp-content/uploads/thumbs/microsoft-excel-2013-logo-vector.svg" width = "30px">[Excel](https://www.microsoft.com/en-us/microsoft-365/excel) - QA Documentation
+- <img src = "https://brandslogos.com/wp-content/uploads/images/adobe-photoshop-cs6-logo-vector.svg" width = "30px">[Photoshop](https://www.adobe.com/) - Logo
 
 
 ## 📄 Documents

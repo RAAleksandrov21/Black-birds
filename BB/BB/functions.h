@@ -1,12 +1,15 @@
-#ifndef FUNCTIONS_H
-#define FUNCTIONS_H
+#pragma once
 
 #include <iostream>
-#include "Bank.h"
+#include <vector>
+#include <string>
 
-void createAccount(Bank& bank);
-void deposit(Bank& bank);
-void withdraw(Bank& bank);
-void checkBalance(Bank& bank);
+class Account; // Forward declaration
 
-#endif // FUNCTIONS_H
+class MyBank {
+private:
+    std::vector<Account*> accounts;
+
+public:
+    bool isNumeric(const std::string& str);
+};

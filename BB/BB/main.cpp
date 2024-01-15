@@ -1,4 +1,5 @@
 #include "functions.h"
+#include "iomanip"
 #include <iostream>
 
 using namespace std;
@@ -8,6 +9,16 @@ int main() {
     char choice;
 
     do {
+        
+        cout << setw(60) << R"(
+                            __________  _____ ____   ____  ___    _   ____ __
+                           / ____/ __ \/ ___//  _/  / __ )/   |  / | / / //_/
+                          / __/ / /_/ /\__ \ / /   / __  / /| | /  |/ /   /  
+                         / /___/ __ _/___/ // /   / /_/ / ___ |/ /|  / /| |  
+                        /_____/_/ |_|/____/___/  /_____/_/  |_/_/ |_/_/ |_|  
+        )" << endl;
+         
+
         cout << "\nMenu:\n";
         cout << "1. Create Account\n";
         cout << "2. Deposit\n";

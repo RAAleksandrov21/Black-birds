@@ -3,15 +3,17 @@
 #include <iostream>
 #include <vector>
 #include <string>
+using namespace std;
 
 class Account; // Forward declaration
 
-class MyBank {
+class MyBank 
+{
 private:
-    std::vector<Account*> accounts;
+    vector<Account*> accounts;
 
 public:
-    bool isNumeric(const std::string& str);
+    bool isNumeric(const string& str);
 
     void createAccount();
 

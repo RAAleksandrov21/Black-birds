@@ -19,25 +19,27 @@ int main() {
         )" << endl;
          
 
-        cout << "\nMenu:\n";
-        cout << "1. Create Account\n";
-        cout << "2. Deposit\n";
-        cout << "3. Withdraw\n";
-        cout << "4. Transfer Digital Assets\n";
-        cout << "5. Check Balance\n";
-        cout << "6. Exit\n";
+        cout << endl << "Menu:" << endl;
+        cout << "1. Create Account" << endl;;
+        cout << "2. Deposit" << endl;
+        cout << "3. Withdraw" << endl;
+        cout << "4. Transfer Digital Assets" << endl;
+        cout << "5. Check Balance" << endl;
+        cout << "6. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
 
         // Handle invalid input
-        if (cin.fail()) {
-            cout << "Invalid input. Please enter a valid choice.\n";
+        if (cin.fail()) 
+        {
+            cout << "Invalid input. Please enter a valid choice." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
         }
 
-        switch (choice) {
+        switch (choice) 
+        {
         case '1':
             myBank.createAccount();
             break;
@@ -59,11 +61,11 @@ int main() {
             break;
 
         case '6':
-            cout << "Exiting the program.\n";
+            cout << "Exiting the program." << endl;
             break;
 
         default:
-            cout << "Invalid choice. Please try again.\n";
+            cout << "Invalid choice. Please try again." << endl;
         }
     } while (choice != '6');
 

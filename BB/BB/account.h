@@ -2,15 +2,17 @@
 
 #include <iostream>
 #include <string>
+using namespace std;
 
-class Account {
+class Account 
+{
 protected:
-    std::string accountNumber;
-    std::string accountHolderName;
+    string accountNumber;
+    string accountHolderName;
     double balance;
 
 public:
-    Account(std::string accountNumber, std::string accountHolderName, double initialBalance)
+    Account(string accountNumber, string accountHolderName, double initialBalance)
         : accountNumber(accountNumber), accountHolderName(accountHolderName), balance(initialBalance) {}
 
     virtual void deposit(double amount);
@@ -19,14 +21,15 @@ public:
 
     double getBalance() const;
 
-    std::string getAccountNumber() const;
+    string getAccountNumber() const;
 
-    std::string getAccountHolderName() const;
+    string getAccountHolderName() const;
 };
 
-class BankAccount : public Account {
+class BankAccount : public Account 
+{
 public:
-    BankAccount(std::string accountNumber, std::string accountHolderName)
+    BankAccount(string accountNumber, string accountHolderName)
         : Account(accountNumber, accountHolderName, 0.0) {} // Set initial balance to 0
 
     void deposit(double amount) override;

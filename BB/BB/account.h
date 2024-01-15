@@ -1,42 +1,35 @@
-#ifndef BANK_H
-#define BANK_H
+#pragma once
 
 #include <iostream>
-#include <vector>
 #include <string>
 
-class BankAccount {
-private:
+class Account {
+protected:
     std::string accountNumber;
     std::string accountHolderName;
     double balance;
 
 public:
-    // Constructor
-    BankAccount(std::string accountNumber, std::string accountHolderName, double initialBalance);
+    Account(std::string accountNumber, std::string accountHolderName, double initialBalance)
+        : accountNumber(accountNumber), accountHolderName(accountHolderName), balance(initialBalance) {}
 
-    // Member functions
-    void deposit(double amount);
+    virtual void deposit(double amount);
 
-    void withdraw(double amount);
+    virtual void withdraw(double amount);
 
     double getBalance() const;
 
-    // Getter for account number
     std::string getAccountNumber() const;
+
+    std::string getAccountHolderName() const;
 };
 
-class Bank {
-private:
-    std::vector<BankAccount> accounts;
-
+class BankAccount : public Account {
 public:
-    // Member functions
-    void createAccount(std::string accountNumber, std::string accountHolderName, double initialBalance);
+    BankAccount(std::string accountNumber, std::string accountHolderName)
+        : Account(accountNumber, accountHolderName, 0.0) {} // Set initial balance to 0
 
-    void performTransaction(std::string accountNumber, char transactionType, double amount);
+    void deposit(double amount) override;
 
-    void checkBalance(std::string accountNumber);
+    void withdraw(double amount) override;
 };
-
-#endif // BANK_H

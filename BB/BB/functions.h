@@ -14,4 +14,6 @@ public:
     bool isNumeric(const std::string& str);
 
     void createAccount();
+
+    void performTransaction(char transactionType);
 };

@@ -209,7 +209,6 @@ void MyBank::checkBalance() {
     // Check if the account number is numeric
     std::cout << "Enter account number: ";
     std::cin >> accountNumber;
-    std::cin >> accountNumber;
     if (!isNumeric(accountNumber)) {
         system("cls");
         title();
@@ -231,6 +230,8 @@ void MyBank::checkBalance() {
     // Check if the account exists
     for (const auto& account : accounts) {
         if (accountNumber == account->getAccountNumber() && accountHolderName == account->getAccountHolderName()) {
+            system("cls");
+            title();
             std::cout << "Account Balance: " << account->getBalance() << std::endl;
             return;
         }

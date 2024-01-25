@@ -2,17 +2,18 @@
 
 #include <iostream>
 #include <string>
-using namespace std;
+#include <fstream>
 
-class Account 
+
+class Account
 {
 protected:
-    string accountNumber;
-    string accountHolderName;
+    std::string accountNumber;
+    std::string accountHolderName;
     double balance;
 
 public:
-    Account(string accountNumber, string accountHolderName, double initialBalance)
+    Account(std::string accountNumber, std::string accountHolderName, double initialBalance)
         : accountNumber(accountNumber), accountHolderName(accountHolderName), balance(initialBalance) {}
 
     virtual void deposit(double amount);
@@ -21,18 +22,22 @@ public:
 
     double getBalance() const;
 
-    string getAccountNumber() const;
+    std::string getAccountNumber() const;
 
-    string getAccountHolderName() const;
+    std::string getAccountHolderName() const;
+
+    virtual void saveToFile() const;
 };
 
-class BankAccount : public Account 
+class BankAccount : public Account
 {
 public:
-    BankAccount(string accountNumber, string accountHolderName)
+    BankAccount(std::string accountNumber, std::string accountHolderName)
         : Account(accountNumber, accountHolderName, 0.0) {} // Set initial balance to 0
 
     void deposit(double amount) override;
 
     void withdraw(double amount) override;
+
+    void saveToFile() const override;
 };

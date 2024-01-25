@@ -1,11 +1,14 @@
 #include "account.h"
+#include "functions.h"
 #include <iostream>
-using namespace std;
 
-void Account::deposit(double amount) 
+
+void Account::deposit(double amount)
 {
     balance += amount;
-    cout << "Deposit successful. New balance: " << balance << endl;
+    system("cls");
+    title();
+    std::cout << "Deposit successful. New balance: " << balance << std::endl;
 }
 
 void Account::withdraw(double amount)
@@ -13,37 +16,50 @@ void Account::withdraw(double amount)
     if (balance >= amount)
     {
         balance -= amount;
-        cout << "Withdrawal successful. New balance: " << balance << endl;
+        system("cls");
+        title();
+        std::cout << "Withdrawal successful. New balance: " << balance << std::endl;
     }
-    else 
+    else
     {
-        cout << "Insufficient funds." << endl;
+        system("cls");
+        title();
+        std::cout << "Insufficient funds." << std::endl;
     }
 }
 
-double Account::getBalance() const 
+double Account::getBalance() const
 {
     return balance;
 }
 
-string Account::getAccountNumber() const 
+std::string Account::getAccountNumber() const
 {
     return accountNumber;
 }
 
-string Account::getAccountHolderName() const 
+std::string Account::getAccountHolderName() const
 {
     return accountHolderName;
 }
 
 void BankAccount::deposit(double amount)
 {
-    // Additional logic for bank account deposits if needed
     Account::deposit(amount);
 }
 
 void BankAccount::withdraw(double amount)
 {
-    // Additional logic for bank account withdrawals if needed
     Account::withdraw(amount);
+}
+
+void Account::saveToFile() const {
+    std::ofstream file(accountNumber + ".txt");
+    file << accountHolderName << "\n";
+    file << balance << "\n";
+    file.close();
+}
+
+void BankAccount::saveToFile() const {
+    Account::saveToFile();
 }

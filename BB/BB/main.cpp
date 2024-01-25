@@ -1,5 +1,4 @@
 #include "functions.h"
-#include "iomanip"
 #include <iostream>
 
 using namespace std;
@@ -8,38 +7,30 @@ int main() {
     MyBank myBank;
     char choice;
 
+    title();
+
     do {
-        
-        cout << setw(60) << R"(
-                            __________  _____ ____   ____  ___    _   ____ __
-                           / ____/ __ \/ ___//  _/  / __ )/   |  / | / / //_/
-                          / __/ / /_/ /\__ \ / /   / __  / /| | /  |/ /   /  
-                         / /___/ __ _/___/ // /   / /_/ / ___ |/ /|  / /| |  
-                        /_____/_/ |_|/____/___/  /_____/_/  |_/_/ |_/_/ |_|  
-        )" << endl;
-         
 
         cout << endl << "Menu:" << endl;
-        cout << "1. Create Account" << endl;;
+        cout << "1. Create Account" << endl;
         cout << "2. Deposit" << endl;
         cout << "3. Withdraw" << endl;
-        cout << "4. Transfer Digital Assets" << endl;
+        cout << "4. Transfer Your Will" << endl;
         cout << "5. Check Balance" << endl;
         cout << "6. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
 
-        // Handle invalid input
-        if (cin.fail()) 
-        {
+        if (cin.fail()) {
+            system("cls");
+            title();
             cout << "Invalid input. Please enter a valid choice." << endl;
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
         }
 
-        switch (choice) 
-        {
+        switch (choice) {
         case '1':
             myBank.createAccount();
             break;
@@ -65,6 +56,8 @@ int main() {
             break;
 
         default:
+            system("cls");
+            title();
             cout << "Invalid choice. Please try again." << endl;
         }
     } while (choice != '6');

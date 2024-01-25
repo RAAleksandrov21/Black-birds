@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, UserMixin, login_user
+from flask_login import LoginManager, UserMixin, login_user, current_user, login_required
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 
@@ -32,12 +32,20 @@ class Testament(db.Model):
     fullname = db.Column(db.String(200), nullable=False)
     typetestament = db.Column(db.String(200), nullable=False)
     body = db.Column(db.Text, nullable=False)
+    
+    def serialize(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'fullname': self.fullname,
+            'typetestament': self.typetestament,
+            'body': self.body
+        }
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# Routes
 @app.route('/register', methods=['POST'])
 def register():
     data = request.json
@@ -74,14 +82,12 @@ def login():
 def create_post():
     user_id = request.get_json().get("user_id")
 
-    # Check if user_id is present
     if user_id is None:
         print("user_id is missing")
         return jsonify({"message": "user_id is missing"}), 400
 
-    print("Received payload:", request.get_json())  # Add this line
+    print("Received payload:", request.get_json())
 
-    # Create a new testament with the provided user_id
     new_testament = Testament(
         user_id=user_id,
         fullname=request.get_json().get("fullname"),
@@ -89,12 +95,18 @@ def create_post():
         body=request.get_json().get("body")
     )
 
-    # Add the new testament to the database
     with app.app_context():
         db.session.add(new_testament)
         db.session.commit()
 
     return jsonify({"message": "Testament successful!"})
+
+@app.route('/get_testaments', methods=['GET'])
+@login_required
+def get_testaments():
+    current_user_id = current_user.id
+    testaments = Testament.query.filter_by(user_id=current_user_id).all()
+    return jsonify([testament.serialize() for testament in testaments])
 
 if __name__ == '__main__':
     with app.app_context():

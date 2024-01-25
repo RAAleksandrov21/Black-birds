@@ -31,6 +31,7 @@
   <ul>
     <li><a href="docs/Documentation.docx">🧾 Documentation</a></li>
     <li><a href="docs/Presantation.pptx">📰 Presentation</a></li>
+    <li><a href="docs/QA table.xlsx">📝 QA table</a></li>
    </ul>
 
 ## 🧑🏻‍💻 Contributors <a name="contributors"></a>

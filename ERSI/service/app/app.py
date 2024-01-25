@@ -5,9 +5,9 @@ from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "192.168.1.13:29006"}})
+CORS(app, resources={r"/*": {"origins": "*"}})
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:1234@localhost/ersi"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:1234@localhost/ersidb"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'your_secret_key'
 
@@ -51,11 +51,11 @@ def register():
 
     new_user = User(fname=fname, lname=lname, email=email, password=hashed_password)
     
-    with app.app_context():
-        db.session.add(new_user)
-        db.session.commit()
+    
+    db.session.add(new_user)
+    db.session.commit()
 
-    return jsonify({"message": "Registration successful" })
+    return jsonify({"message": "Registration successful","user_id": new_user.id }),200
 
 @app.route('/login', methods=['GET'])
 def login():
@@ -66,21 +66,30 @@ def login():
 
     if user and bcrypt.check_password_hash(user.password, password):
         login_user(user)
-        return jsonify({"message": "Login successful"})
+        return jsonify({"message": "Login successful", "user_id": user.id}),200
     else:
         return jsonify({"message": "Invalid email or password"}), 401
 
 @app.route("/create_post", methods=["POST"])
 def create_post():
-    user_id = request.get_json()["user_id"]
+    user_id = request.get_json().get("user_id")
 
+    # Check if user_id is present
+    if user_id is None:
+        print("user_id is missing")
+        return jsonify({"message": "user_id is missing"}), 400
+
+    print("Received payload:", request.get_json())  # Add this line
+
+    # Create a new testament with the provided user_id
     new_testament = Testament(
         user_id=user_id,
-        fulname=request.get_json()["fulname"],
-        typetestament=request.get_json()["typetestament"],
-        body=request.get_json()["body"]
+        fullname=request.get_json().get("fullname"),
+        typetestament=request.get_json().get("typetestament"),
+        body=request.get_json().get("body")
     )
 
+    # Add the new testament to the database
     with app.app_context():
         db.session.add(new_testament)
         db.session.commit()

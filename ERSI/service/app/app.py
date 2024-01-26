@@ -46,6 +46,7 @@ class Testament(db.Model):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
+# Routes
 @app.route('/register', methods=['POST'])
 def register():
     data = request.json
@@ -82,12 +83,14 @@ def login():
 def create_post():
     user_id = request.get_json().get("user_id")
 
+    # Check if user_id is present
     if user_id is None:
         print("user_id is missing")
         return jsonify({"message": "user_id is missing"}), 400
 
-    print("Received payload:", request.get_json())
+    print("Received payload:", request.get_json())  # Add this line
 
+    # Create a new testament with the provided user_id
     new_testament = Testament(
         user_id=user_id,
         fullname=request.get_json().get("fullname"),
@@ -95,6 +98,7 @@ def create_post():
         body=request.get_json().get("body")
     )
 
+    # Add the new testament to the database
     with app.app_context():
         db.session.add(new_testament)
         db.session.commit()
@@ -107,6 +111,18 @@ def get_testaments():
     current_user_id = current_user.id
     testaments = Testament.query.filter_by(user_id=current_user_id).all()
     return jsonify([testament.serialize() for testament in testaments])
+
+@app.route('/user/<user_id>', methods=['GET'])
+def get_user(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    if user:
+        return jsonify({
+            'fname': user.fname,
+            'lname': user.lname,
+            'email': user.email
+        })
+    else:
+        return jsonify({'error': 'User not found'}), 404
 
 if __name__ == '__main__':
     with app.app_context():
